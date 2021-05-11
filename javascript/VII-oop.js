@@ -73,8 +73,6 @@ var prsn = new Person("Hasan", "Satici");
 
 // console.log(prsn.getFullName());
 
-
-
 var myObject = {
     name: "My Object",
     print: function () {
