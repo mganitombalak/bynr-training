@@ -1,27 +1,30 @@
 
-
-let app=Vue.createApp({
+let app = Vue.createApp({
     data() {
         return {
             tasks: [],
             taskName: '',
-            options:{
-                buttonText:'Save',
-                title:'<strong>Tasks List</strong>'
+            options: {
+                buttonText: 'Save',
+                title: '<strong>Tasks List</strong>'
             },
         };
     },
     methods: {
-        addTask(event,value) {
+        addTask(event, value) {
             this.tasks.push(this.taskName);
-            this.taskName='';
+            this.taskName = '';
             console.dir(event);
             console.log(`val:${value}`);
             console.log(this.$refs.myText.value);
         }
     }
 });
-app.createComponent({});
+app.createComponent('my-component', {
+    template: '',
+    dahfhhjbfjklkbvb
+    hfhhjgjgj
+});
 app.mount('#taskApp');
 
 //MVC, MVP, MVVM, MV *
