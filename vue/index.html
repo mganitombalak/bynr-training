@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue | Start</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="taskApp">
+      <input
+        type="text"
+        name="name"
+        id="txtName"
+        v-model="taskName"
+        v-on:keyup.enter="addTask"
+      />
+      <!-- <input
+        v-if="taskName.length>=3"
+        id="button"
+        type="button"
+        @click.stop="addTask($event,4)"
+        :value="options.buttonText"
+      /> -->
+      <input v-show="taskName.length>=3" id="button" type="button" @click.stop="addTask($event,4)" :value="options.buttonText" ref="myText"/>
+      <!-- <p v-else-if="taskName.length===1">Must be at least 3 character</p>
+      <p v-else>Please enter a value</p> -->
+      <div v-html="options.title"></div>
+      <!-- <ul id="lstTask"></ul> -->
+      <ul>
+        <!-- {tasks.map(e=><li>{e.name}</li>)} -->
+        <li v-for="(task,index) in tasks" :key="index">{{index}} - {{task}}</li>
+      </ul>
+      <!-- <br />
+      <input
+        v-if="taskName.length>=3"
+        id="button"
+        type="button"
+        @click.stop="addTask($event,4)"
+        :value="options.buttonText"
+      />
+      <p v-else-if="taskName.length===1">Must be at least 3 character</p>
+      <p v-else>Please enter a value</p> -->
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
