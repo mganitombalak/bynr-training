@@ -1,14 +1,11 @@
 <template>
-  <Header></Header>
+  <p>Home</p>
 </template>
 
 <script>
-import Header from '../../common/components/Header'
+
 export default {
-  name: 'App',
-  components: {
-    Header
-  }
+  name: 'App'
 }
 </script>
 
