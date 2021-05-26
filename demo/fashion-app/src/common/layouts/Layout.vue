@@ -1,6 +1,7 @@
 <template> 
 <TheHeader></TheHeader>
 <router-view></router-view>
+<!-- <router-view name="namedroute"></router-view> -->
 <TheFooter></TheFooter>
 </template>
 
@@ -14,3 +15,7 @@ export default {
   },
 };
 </script>
+// beforeUnmount(){
+  //   // modal.show({component:Gani,title:"Bak gidiyorum",buttonOptions:['OK']});
+  //   // modal.show({component:Hopi,title:"Hopi gidiyorum",buttonOptions:['OK']});
+  // }

@@ -130,8 +130,9 @@
                 </div>
                 <nav class="nav-menu mobile-menu">
                     <ul>
+                        <li><base-button><router-link to="/">Hello</router-link></base-button></li>
                         <li><router-link to="/">Home</router-link></li>
-                        <li><router-link to="/shop/25">Shop</router-link></li>
+                        <li><router-link to="/shop">Shop</router-link></li>
                         <li><a href="#">Collection</a>
                             <ul class="dropdown">
                                 <li><a href="#">Men's</a></li>
@@ -160,8 +161,11 @@
 </template>
 
 <script>
+import BaseButton from './BaseMenuButton';
 export default {
-    
+    component:{
+        BaseButton
+    }
 }
 </script>
 
