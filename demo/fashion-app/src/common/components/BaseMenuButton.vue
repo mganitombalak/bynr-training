@@ -6,9 +6,8 @@
 </template>
 <script>
 export default{
-  inject:['key'],
   mounted(){
-    console.dir(this.$slots.first);
+    // console.dir(this.$slots.first);
   }
 }
 </script>

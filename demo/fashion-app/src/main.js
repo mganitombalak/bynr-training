@@ -1,30 +1,37 @@
 import { createApp } from 'vue'
-import {createRouter,createWebHistory} from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
+import store from './store/index';
+
 import root from './pages/Root';
 import HomePage from './pages/home/Home';
 import NotFound from './common/components/NotFound';
 import '../src/assets/css/style.css';
 
-const shopPage = ()=> import('./pages/shop/Shop.vue'); // LAZY LOAD
+
+const shopPage = () => import('./pages/shop/Shop.vue'); // LAZY LOAD
+const LoginPage = () => import('./pages/auth/Login.vue'); // LAZY LOAD
 
 const router = createRouter({
     history: createWebHistory(),
     routes: [
-        {path:'/',component:HomePage},
-        { path: '/shop', component: shopPage ,children:[
-            { path: ':id', component: shopPage,props:true }
-        ]},
+        { path: '/', component: HomePage },
+        {
+            path: '/shop', component: shopPage, children: [
+                { path: ':id', component: shopPage, props: true }
+            ]
+        },
+        { path: '/auth', component: LoginPage },
         { path: '/:notfound(.*)', component: NotFound },
     ],
-    linkActiveClass:'active',
-    scrollBehavior(to,from) {
-        console.log(from);
-        console.log(to);
-        // if(savedPosition){
-        //     return savedPosition;
-        // } else
-        return {left:0,top:0};
-    },
+    linkActiveClass: 'active',
+    // scrollBehavior(to, from) {
+    //     // console.log(from);
+    //     // console.log(to);
+    //     // if(savedPosition){
+    //     //     return savedPosition;
+    //     // } else
+    //     return { left: 0, top: 0 };
+    // },
 });
 
 // router.beforeEach((to,from,next)=>{
@@ -35,6 +42,7 @@ const router = createRouter({
 
 let app = createApp(root);
 app.use(router);
+app.use(store);
 app.mount('#app')
 
 
@@ -59,7 +67,7 @@ app.mount('#app')
 // </div>
 
 // document.QuerySelector("#hizlibak").addEventlistener('click',()=>{
-    
+
 //     import('modal.js').then(m=>{
 //         import('my.csss');
 //         m.show();

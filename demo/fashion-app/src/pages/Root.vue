@@ -4,9 +4,6 @@
 <script>
 import Layout from '../common/layouts/Layout'
 export default {
-    provide:[
-        {key:"value"}
-    ],
     components:{
         Layout
     }
