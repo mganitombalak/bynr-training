@@ -1,15 +1,14 @@
 <template>
   <div class="mail-service">
     <i class=" fa fa-envelope"></i>
-    {{userName}}
+    {{getFullName}}
   </div>
 </template>
 <script>
+import {mapGetters} from 'vuex';
 export default {
     computed:{
-        userName(){
-            return this.$store?.userInfo?.email || "No Logged In Yet" ;
-        }
+        ...mapGetters('auth',['getFullName']),
     }
 };
 </script>

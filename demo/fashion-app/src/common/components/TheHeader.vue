@@ -164,7 +164,7 @@
             <li><a href="./blog.html">Blog</a></li>
             <li><a href="./contact.html">Contact</a></li>
             <li>
-              <router-link to="/auth">{{isLoggedIn?'Logour':'Login'}}</router-link>
+              <router-link to="/auth">{{isLogged?'Logout':'Login'}}</router-link>
             </li>
           </ul>
         </nav>
@@ -181,12 +181,10 @@ import {mapGetters} from 'vuex';
 export default {
   computed: {
     ...mapGetters('pricing',['latestPrice']),
+    ...mapGetters('auth',['isLogged']),
     // latesPrice() {
     //   return this.$store.getters.latestPrice;
     // },
-    isLoggedIn(){
-      return false;
-    }
   },
   components: { BaseMenuButton, UserInfo },
 };

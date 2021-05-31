@@ -1,10 +1,20 @@
-const pricingModule = {
+import authActions from './actions';
+import authMutations from './mutations';
+import authGetters from './getters';
+
+const authModule = {
     namespaced:true,
     state(){
-        return { price: 0, discount: 0.9 }
+        return { 
+            isLogged:false,
+            userInfo:null,
+            notAllowedPages:[]
+        }
     },
-    mutations:pricingMutations,
-    actions:pricingActions,
-    getters:pricingGetters
+    actions:authActions,
+    mutations:authMutations,
+    getters:authGetters
     // modules:{}    
 };
+
+export default authModule;

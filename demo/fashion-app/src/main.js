@@ -34,11 +34,16 @@ const router = createRouter({
     // },
 });
 
-// router.beforeEach((to,from,next)=>{
-//     console.log(from);
-//     console.log(to);
-//     next(false);
-// });
+router.beforeEach((to, from, next) => {
+    let currentUser = store.getters['auth/getFullName'];
+    let notAllowedPages = store.getters['auth/getNotAllowedPages'];
+    console.log(`${currentUser} navigates from ${from.path} to ${to.path}`);
+    if (currentUser.startsWith('Not Auth')) {
+        next();
+    } else {
+        next(notAllowedPages?.includes(to.path.replace('/', '')));
+    }
+});
 
 let app = createApp(root);
 app.use(router);

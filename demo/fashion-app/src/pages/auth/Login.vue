@@ -1,5 +1,5 @@
 <template>
-  <div class="register-login-section spad">
+  <div v-if="!isLogged" class="register-login-section spad">
     <div class="container">
       <div class="row">
         <div class="col-lg-6 offset-lg-3">
@@ -8,7 +8,7 @@
             <form @submit.prevent="onSubmitHandler">
               <div class="group-input">
                 <label for="username">Username or email address *</label>
-                <input type="email" id="username" v-model="username" required/>
+                <input type="text" id="username" v-model="username"/>
               </div>
               <div class="group-input">
                 <label for="pass">Password *</label>
@@ -27,17 +27,17 @@
               <button type="submit" class="site-btn login-btn">Sign In</button>
             </form>
             <div class="switch-login">
-              <a href="./register.html" class="or-login"
-                >Or Create An Account</a
-              >
+              <a href="./register.html" class="or-login">Or Create An Account</a>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+ <button v-else  @click="customLogout"  class="site-btn login-btn">Logout</button>
 </template>
 <script>
+import {mapActions,mapGetters} from 'vuex';
 export default {
     data(){
         return {
@@ -47,17 +47,22 @@ export default {
     },
     computed:{
         isFormValid(){
-            return this.username !=='' && this.password !== '' & this.username.includes('@');
-        }
+            return true;//this.username !=='' && this.password !== '' & this.username.includes('@');
+        },
+        ...mapGetters('auth',['isLogged'])
     },
     methods:{
         onSubmitHandler(){
             if(this.isFormValid){
-                console.log('form can be submited');
+                this.login({username:this.username,password:this.password});
             } else
             {
                 console.log('form has errors.');
             }
+        },
+        ...mapActions('auth',['login','logout']),
+        customLogout(){
+            this.$store.dispatch('auth/logout');
         }
     }
 }
