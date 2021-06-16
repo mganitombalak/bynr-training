@@ -21,14 +21,19 @@ export default {
   components: {
     CampaignItem
   },
-  asyncData(context, callback) {
+  asyncData(context) {
+    // this.$route.params.id X
+    if (!process.client) {
+      console.dir(context.req);
+    }
     const campaignService = new CampaignService();
-    setTimeout(() => {
-      let result=campaignService.getCampaigns();
-      callback(null,{
-        campaigns:result
-      });
-    }, 100);
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        let result = campaignService.getCampaigns();
+        resolve({ campaigns: result });
+        // reject("Olaylay olaylar");
+      }, 100);
+    }).catch(e=>context.error(e));
   }
 };
 </script>
