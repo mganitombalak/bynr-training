@@ -4813,6 +4813,6 @@ export const campaigns  = [
 
 export default class CampaignService {
   getCampaigns() {
-    return campaigns;
+    return Promise.resolve(campaigns);
   }
 }
