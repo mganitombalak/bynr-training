@@ -16,7 +16,7 @@
   </div>
 </template>
 <script>
-import CampaignService from "../../services/campaign/service";
+// import CampaignService from "../../services/campaign/service";
 // import CampaignItem from "../../components/common/campaign/CampaingItem.vue";
 // import {mapActions} from 'vuex';
 export default {
@@ -38,7 +38,7 @@ export default {
   // }
   computed: {
     campaignList() {
-      return this.$store.getters.getCampaignList;
+      return this.$store.getters['campaing/getCampaignList'];
     }
   },
   // created() {

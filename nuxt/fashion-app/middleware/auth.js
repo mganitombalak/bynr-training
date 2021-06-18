@@ -1,4 +1,12 @@
 export default function (context) {
-  console.log('triggered');
-  context.store.commit("auth/setAlreadyAuthenticatedUser");
+  if (process.client) {
+    if (!context.store.getters['auth/isLogged']) {
+      let currentUser = JSON.parse(localStorage?.getItem("user"));
+      if (currentUser) {
+        context.store.commit("auth/setAlreadyAuthenticatedUser");
+      }else {
+        context.redirect('/auth/login');
+      }
+    }
+  }
 }

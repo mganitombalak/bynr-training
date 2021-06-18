@@ -18,17 +18,9 @@ export const mutations = {
     context.userInfo = null;
     localStorage.removeItem('user');
   },
-  setAlreadyAuthenticatedUser(context){
-    if (!context.isLogged) {
-      let currentUser = JSON.parse(localStorage?.getItem("user"));
-      console.log(currentUser);
-      if (currentUser) {
-        context.isLogged = true;
-        context.userInfo = currentUser;
-      }else {
-        context.redirect('/auth/login');
-      }
-    }
+  setAlreadyAuthenticatedUser(context) {
+    context.isLogged = true;
+    context.userInfo = currentUser;
   }
 }
 
