@@ -344,7 +344,8 @@ export const megaMenu = [
   { id: '', name: 'ELEKTRONİK', url: '#', category: [] },
   { id: '', name: 'KOZMETİK', url: '#', category: [] },
   { id: '', name: 'AKSESUAR', url: '#', category: [] },
-  { id: '', name: 'MARKALAR', url: '#', category: [] }
+  { id: '', name: 'MARKALAR', url: '#', category: [] },
+  { id: '', name: 'ADMIN', url: '/admin', category: [] }
 ];
 
 export default class MenuService {

@@ -13,7 +13,7 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: "https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" }
+      { rel: 'stylesheet', href: "https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" },
     ]
   },
   // alias:{
@@ -32,7 +32,7 @@ export default {
   telemetry: false,
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    './node_modules/bootstrap/dist/css/bootstrap.min.css'
+    '@/assets/css/style.css',
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -40,23 +40,23 @@ export default {
     '~/plugins/directives/menu-hover/index.js',
     '~/plugins/components/campaign-item/index.js'
   ],
-  router: {
-    base: '/',
-    mode:'hash',
-    linkActiveClass:'active'
-    // extendRoutes(routes, resolve) {
-    //   routes.push({
-    //     path: '/users/:id',
-    //     components: {
-    //       default: resolve(__dirname, 'pages/users'), // or routes[index].component
-    //       modal: resolve(__dirname, 'components/modal.vue')
-    //     },
-    //     chunkNames: {
-    //       modal: 'components/modal'
-    //     }
-    //   })
-    // }
-  },
+  // router: {
+  //   // base: '/',
+  //   // mode:'hash',
+  //   // linkActiveClass:'active'
+  //   // extendRoutes(routes, resolve) {
+  //   //   routes.push({
+  //   //     path: '/users/:id',
+  //   //     components: {
+  //   //       default: resolve(__dirname, 'pages/users'), // or routes[index].component
+  //   //       modal: resolve(__dirname, 'components/modal.vue')
+  //   //     },
+  //   //     chunkNames: {
+  //   //       modal: 'components/modal'
+  //   //     }
+  //   //   })
+  //   // }
+  // },
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
