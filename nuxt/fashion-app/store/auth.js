@@ -11,12 +11,24 @@ export const mutations = {
   login(context, payload) {
     context.isLogged = payload.loginStatus;
     context.userInfo = payload.userInfo;
-    localStorage.setItem('user', payload.userInfo);
+    localStorage.setItem('user', JSON.stringify(payload.userInfo));
   },
   logout(context) {
     context.isLogged = false;
     context.userInfo = null;
     localStorage.removeItem('user');
+  },
+  setAlreadyAuthenticatedUser(context){
+    if (!context.isLogged) {
+      let currentUser = JSON.parse(localStorage?.getItem("user"));
+      console.log(currentUser);
+      if (currentUser) {
+        context.isLogged = true;
+        context.userInfo = currentUser;
+      }else {
+        context.redirect('/auth/login');
+      }
+    }
   }
 }
 
@@ -35,6 +47,7 @@ export const actions = {
   logout(context) {
     context.commit('logout');
   }
+
 }
 
 export const getters = {

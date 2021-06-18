@@ -1,6 +1,4 @@
-export default function(context){
-  console.log();
-  if(!context.store.getters['auth/isLogged']){
-    context.redirect('/auth/login');
-  }
+export default function (context) {
+  console.log('triggered');
+  context.store.commit("auth/setAlreadyAuthenticatedUser");
 }

@@ -15,6 +15,7 @@ const createStore = () => {
       async nuxtServerInit(storeContext, context) {
         let result = await new CampaignService().getCampaigns();
         // console.log(context.req);
+        // localstorage a erisemiyoruz.
         storeContext.dispatch('setCampaign',result);
       },
       setCampaign(storeContext, payload) {
