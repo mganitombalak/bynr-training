@@ -1,6 +1,8 @@
 <template>
   <div class="d-flex flex-column">
     Kampanya List
+    <!-- <p v-if="$fetchState.pending">Loading.....</p> -->
+    <!-- <template v-else v-for="(campaign, index) in campaignList"> -->
     <template v-for="(campaign, index) in campaignList">
       <CampaignItem
         :key="'camp_' + index"
@@ -9,18 +11,31 @@
         :body="campaign.SloganText"
       ></CampaignItem>
     </template>
+
+    <!-- <button @click="$fetch"></button> -->
   </div>
 </template>
 <script>
 import CampaignService from "../../services/campaign/service";
-import CampaignItem from "../../components/common/campaign/CampaingItem.vue";
+// import CampaignItem from "../../components/common/campaign/CampaingItem.vue";
+// import {mapActions} from 'vuex';
 export default {
   // data() {
   //   return { campaigns: [] };
   // },
-  components: {
-    CampaignItem
+  head(){
+    return {
+      title:'Morhipo | Kampanyalar'
+    }
   },
+  loading:false,
+  middleware:['log'],
+  // components: {
+  //   CampaignItem
+  // },
+  // methods:{
+  //   // ...mapActions:('kampayanlar',['toogle'])
+  // }
   computed: {
     campaignList() {
       return this.$store.getters.getCampaignList;
@@ -35,7 +50,8 @@ export default {
   //   let result =await new CampaignService().getCampaigns();
   //   context.store.commit("setCampaign", result);
   // },
-  // fetchOnServer:true
+  // fetchOnServer:true,
+  // fetchDelay:
   // asyncData(context) {
   //   // this.$route.params.id X
   //   // if (!process.client) {

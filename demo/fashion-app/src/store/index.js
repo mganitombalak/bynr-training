@@ -10,7 +10,7 @@ const store = createStore({
     state() {
         return {
             products: [],
-            shopComponent: {
+            shopComponent: { 
                 total: 0,
                 items: []
             },

@@ -12,4 +12,4 @@ Vue.directive('on-hover-show', {
       }
     });
   }
-})
+});

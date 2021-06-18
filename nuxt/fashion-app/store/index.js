@@ -14,7 +14,7 @@ const createStore = () => {
     actions: {
       async nuxtServerInit(storeContext, context) {
         let result = await new CampaignService().getCampaigns();
-        console.log(context.req);
+        // console.log(context.req);
         storeContext.dispatch('setCampaign',result);
       },
       setCampaign(storeContext, payload) {
