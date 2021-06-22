@@ -19,17 +19,18 @@
 // import CampaignService from "../../services/campaign/service";
 // import CampaignItem from "../../components/common/campaign/CampaingItem.vue";
 // import {mapActions} from 'vuex';
+import axios from "axios";
 export default {
   // data() {
   //   return { campaigns: [] };
   // },
-  head(){
+  head() {
     return {
-      title:'Morhipo | Kampanyalar'
-    }
+      title: "Morhipo | Kampanyalar"
+    };
   },
-  loading:false,
-  middleware:['log'],
+  loading: false,
+  middleware: ["log"],
   // components: {
   //   CampaignItem
   // },
@@ -38,7 +39,7 @@ export default {
   // }
   computed: {
     campaignList() {
-      return this.$store.getters['campaign/getCampaignList'];
+      return this.$store.getters["campaign/getCampaignList"];
     }
   },
   // created() {
@@ -52,19 +53,22 @@ export default {
   // },
   // fetchOnServer:true,
   // fetchDelay:
-  // asyncData(context) {
-  //   // this.$route.params.id X
-  //   // if (!process.client) {
-  //   //   console.dir(context.req);
-  //   // }
-  //   const campaignService = new CampaignService();
-  //   return new Promise((resolve, reject) => {
-  //     setTimeout(async () => {
-  //       let result = await campaignService.getCampaigns();
-  //       resolve({ campaigns: result });
-  //       // reject("Olaylay olaylar");
-  //     }, 100);
-  //   }).catch(e => context.error(e));
-  // }
+  asyncData(context) {
+    if (!process.client) {
+      // console.dir(context.req.headers?.cookie);
+      if (context.req.headers?.cookie) {
+        let authToken = context.req.headers.cookie.split("=")[1];
+        let requestHeader = {
+          headers: {
+            'Authorization': `Bearer ${authToken}`
+          }
+        };
+        axios.post("http://www.morhipo.com", { token: authToken },{headers:requestHeader})
+        .then(r=>console.log('Morhipo pinged!'))
+        .catch(e=> console.log(`${e.message} Morhipo responded ping with error with token ${authToken}`));
+      }
+    }
+    return Promise.resolve();
+  }
 };
 </script>

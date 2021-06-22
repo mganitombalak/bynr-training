@@ -1,4 +1,5 @@
 import AuthService from '../services/auth';
+import Cookie from 'js-cookie';
 
 export const state = () => ({
   isLogged: false,
@@ -10,6 +11,7 @@ export const mutations = {
     context.isLogged = payload.loginStatus;
     context.userInfo = payload.userInfo;
     localStorage.setItem('user', JSON.stringify(payload.userInfo));
+    Cookie.set('token',"3456789sdradfa6df7g8a8fga97dfg8",{expires:(new Date().getTime() + 3600)});
   },
   logout(context) {
     context.isLogged = false;
@@ -29,7 +31,7 @@ export const actions = {
     //   context.commit('login', { loginStatus: result.status, userInfo: result.userInfo });
     //   return result.status? res():rej();
     // });
-    let result = new AuthService.login(payload.userName, payload.password);
+    let result = new AuthService().login(payload.userName, payload.password);
     context.commit('login', { loginStatus: result.status, userInfo: result.userInfo });
     return result.status ? Promise.resolve() : Promise.reject();
 
