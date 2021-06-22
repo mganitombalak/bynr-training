@@ -1,5 +1,6 @@
 // import package from './package';
 export default {
+  devtools:true,
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'Morhipo | Moda Alisveris Sitesi', //package.name

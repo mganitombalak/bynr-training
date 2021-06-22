@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <nuxt-link to="/">Morhipo</nuxt-link>
+      <nuxt-link to="/">M</nuxt-link>
       <button
         class="navbar-toggler"
         type="button"

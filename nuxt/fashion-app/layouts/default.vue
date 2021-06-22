@@ -1,14 +1,14 @@
 <template>
-<div>
-  <Header></Header>
-  <Nuxt/>
-  <Footer></Footer>
-</div>
+  <div>
+    <Header></Header>
+    <Nuxt />
+    <Footer></Footer>
+  </div>
 </template>
 <script>
-import Header from '../components/common/header/header';
-import Footer from '../components/common/footer';
+import Header from "../components/common/header/header";
+import Footer from "../components/common/footer";
 export default {
-  components:{Header,Footer}
-}
+  components: { Header, Footer }
+};
 </script>

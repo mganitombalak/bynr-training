@@ -38,7 +38,7 @@ export default {
   // }
   computed: {
     campaignList() {
-      return this.$store.getters['campaing/getCampaignList'];
+      return this.$store.getters['campaign/getCampaignList'];
     }
   },
   // created() {

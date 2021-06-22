@@ -1,7 +1,5 @@
 import AuthService from '../services/auth';
 
-const authService = new AuthService();
-
 export const state = () => ({
   isLogged: false,
   userInfo: null
@@ -18,9 +16,9 @@ export const mutations = {
     context.userInfo = null;
     localStorage.removeItem('user');
   },
-  setAlreadyAuthenticatedUser(context) {
+  setAlreadyAuthenticatedUser(context,payload) {
     context.isLogged = true;
-    context.userInfo = currentUser;
+    context.userInfo = payload.userInfo;
   }
 }
 
@@ -31,7 +29,7 @@ export const actions = {
     //   context.commit('login', { loginStatus: result.status, userInfo: result.userInfo });
     //   return result.status? res():rej();
     // });
-    let result = authService.login(payload.userName, payload.password);
+    let result = new AuthService.login(payload.userName, payload.password);
     context.commit('login', { loginStatus: result.status, userInfo: result.userInfo });
     return result.status ? Promise.resolve() : Promise.reject();
 

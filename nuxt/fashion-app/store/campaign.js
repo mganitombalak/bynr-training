@@ -1,4 +1,3 @@
-
 export const state = () => ({
   campaigns: []
 });
@@ -9,14 +8,14 @@ export const mutations = {
   }
 };
 export const actions = {
-  async nuxtServerInit(storeContext, context) {
-    let result = await new CampaignService().getCampaigns();
-    // console.log(context.req);
-    // localstorage a erisemiyoruz.
-    storeContext.dispatch('setCampaign', result);
-  },
-  setCampaign(storeContext, payload) {
-    storeContext.commit('setCampaign', payload);
+  // setCampaign: {
+  //   root: true,
+  //   handler(currentContext, payload) {
+  //     currentContext.commit('setCampaign', payload);
+  //   }
+  // }
+  setCampaign(currentContext,payload) {
+    currentContext.commit('setCampaign', payload);
   }
 };
 export const getters = {
