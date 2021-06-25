@@ -1,4 +1,6 @@
 
+
+const vueAppCreationTime = performance.now();
 let app = Vue.createApp({
     data() {
         return {
@@ -26,6 +28,7 @@ app.createComponent('my-component', {
     hfhhjgjgj
 });
 app.mount('#taskApp');
+const vueAppCreationTimeEnd=performance.mark();
 
 //MVC, MVP, MVVM, MV *
 
