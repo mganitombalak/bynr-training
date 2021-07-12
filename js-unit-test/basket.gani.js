@@ -104,5 +104,6 @@ describe('return values', () => {
 });
 
 // TEST CASES
-// 1.
-// 2.
+// 1. Silinip silinmeme
+// 2. Throw test
+// 3. Parameter check
