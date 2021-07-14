@@ -95,12 +95,15 @@ describe('return values', () => {
             productName: 'Adidas Sneakers',
             qty: 1
         };
-        let result = f(newItem);
+        // let result = 
+        f(newItem);
         // expect(basketArray.length + 1).toBe(result);
         expect(f.mock.results[0].value).toBe(1);
         //    f.mock.results[0].value 
         f.mock.mockReturnValueOnce(1).mockReturnValueOnce(0).mockReturnValueOnce(0);
     });
+
+    test('')
 });
 
 // TEST CASES
