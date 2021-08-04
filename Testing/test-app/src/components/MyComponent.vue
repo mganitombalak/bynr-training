@@ -3,11 +3,11 @@
   <div>{{ sayi }} {{text}}</div>
 </template>
 <script>
-import { computed } from "vue";
-import { useStore } from "vuex";
+import { computed,inject } from "vue";
+// import { useStore } from "vuex";
 export default {
   setup() {
-    const store = useStore();
+    const store = inject('hipoStore') // useStore()
     const sayi = computed(() => store.state.sayi);
     const text = computed(() => store.state.text);
     const arttir = () => {
