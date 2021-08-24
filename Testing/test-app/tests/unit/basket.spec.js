@@ -12,8 +12,8 @@ let mockedPostFunction = jest.fn();
 jest.mock('axios', () => ({ post: () => mockedPostFunction() }))
 function wrapperFactory() {
     return mount(Basket,{
-        globa:{
-            stub:['router-link']
+        global:{
+            stubs:['router-link']
         }
     });
 }
@@ -57,22 +57,26 @@ describe('When basket  has no items, basket', () => {
     });
     it('should show \'Basket is Empty\' message', () => {
         const wrapper = wrapperFactory();
-        const firstElement= wrapper.find('div > span:first-of-type')
+        const container= wrapper.find('div');
+        // const container= wrapper.find('[data-test-id="test-1"]');
+        const firstElement=container.find(":first-child");
         expect(firstElement.html()).toBe('<span>Sepetinizde henuz urun yok</span>');
     });
 
-    it('should show \'Continue Shopping\' message under \'Basket is empty\' message', () => {
+    it('should show \'Continue Shopping\' message under \'Basket is empty\' message and should always be last element', () => {
         const wrapper = wrapperFactory();
-        const lastElement = wrapper.find('div > a:last-of-type');
-        expect(lastElement.html()).toBe('<a href="/shop">Alisverise devam edin!</a>');
+        console.log(wrapper.html());
+        const container = wrapper.find('div');
+        const lastElement= container.find(":last-child");
+        expect(lastElement.html()).toBe('<router-link-stub to="/shop"></router-link-stub>');
     });
 });
 
-describe.only('When there is an comm error,basket', () => {
+describe('When there is an comm error,basket', () => {
     beforeEach(()=>{
         mockedPostFunction = jest.fn(() => Promise.reject({status:500,message:'Comm Err'}));
     });
-    it.only('should show \'Sorry\' message if there is an error in API Communication', async () => {
+    it('should show \'Sorry\' message if there is an error in API Communication', async () => {
         const wrapper = wrapperFactory();
         await fp();
         const commErrNotificationContainer= wrapper.find('div#commError');
